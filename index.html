@@ -1110,7 +1110,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ===== ALIMENTAÇÃO SECTION MODIFICADA ===== */
+/* ===== ALIMENTAÇÃO SECTION MODIFICADA CORRIGIDA ===== */
 .alimentacao {
   background: var(--dark);
   padding: 120px 6%;
@@ -1144,7 +1144,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 @media (max-width: 1024px) {
   .alim-split-container {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 50px;
   }
 }
 
@@ -1153,7 +1153,8 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding: 10px 0;
+  padding: 15px 0;
+  display: block; /* Garante que renderiza sempre */
 }
 
 .nutri-carousel-track {
@@ -1203,9 +1204,26 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   letter-spacing: 1px;
 }
 
+/* AJUSTES ADICIONAIS DE RESPONSIVIDADE PARA O CELULAR NÃO SUMIR COM AS FOTOS */
+@media (max-width: 768px) {
+  .carousel-card {
+    width: 180px; /* Reduz o tamanho do card no celular para caber perfeitamente na viewport */
+    height: 260px;
+  }
+  .card-caption {
+    font-size: 0.7rem;
+    padding: 1.2rem 0.8rem 0.8rem 0.8rem;
+  }
+  @keyframes scrollInfinite {
+    0% { transform: translateX(0); }
+    /* Reajusta o cálculo de scroll infinito no celular com base na nova largura do card: 180px + 24px (gap) = 204px */
+    100% { transform: translateX(calc(-204px * 8)); }
+  }
+}
+
 @keyframes scrollInfinite {
   0% { transform: translateX(0); }
-  /* Move exatamente o tamanho de 8 cards (280px + 24px de gap = 304px por card) */
+  /* No computador o cálculo permanece baseado em: 280px + 24px (gap) = 304px */
   100% { transform: translateX(calc(-304px * 8)); }
 }
 
@@ -1427,7 +1445,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
       <div class="historia-card reveal reveal-delay-3">
         <div class="hcard-icon">🎯</div>
         <h4>Objetivo claro</h4>
-        <p>Maratona sub 2h40 e pódios nas principais provas do Brasil. Com os parceiros certos, esse potencial cresce ainda mais rápido.</p>
+        <p>Maratona sub 2h40 e pódios nas principais provas do Brasil. Com os parceiros certos, esse potential cresce ainda mais rápido.</p>
       </div>
     </div>
   </div>
@@ -1580,7 +1598,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
       </div>
     </div>
 
-    <div class="reveal reveal-delay-2" style="align-self: center;">
+    <div class="reveal reveal-delay-2" style="align-self: center; width: 100%;">
       <div class="nutri-carousel-container">
         <div class="nutri-carousel-track">
           
@@ -1712,7 +1730,10 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 
 <footer>
   <p>© 2026 Bruna Oliveira — Performance Running</p>
-  <div class="footer-logo">BRUNA <em>OLIVEIRA</em></div>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+    <div class="footer-logo" style="margin-bottom: 0;">BRUNA <em>OLIVEIRA</em></div>
+    <a href="mailto:contato@brunaoliveira.com.br" style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--acid); text-decoration: none; letter-spacing: 1px; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">contato@brunaoliveira.com.br</a>
+  </div>
   <p>Camboriú · SC · Brasil</p>
 </footer>
 
