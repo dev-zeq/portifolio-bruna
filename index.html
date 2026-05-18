@@ -1110,6 +1110,163 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
+/* ===== ALIMENTAÇÃO SECTION MODIFICADA ===== */
+.alimentacao {
+  background: var(--dark);
+  padding: 120px 6%;
+  position: relative;
+  overflow: hidden;
+}
+.alimentacao::before {
+  content: "FUEL";
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28vw;
+  color: rgba(198,255,0,0.025);
+  right: -4%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  letter-spacing: -10px;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.alim-split-container {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .alim-split-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* Custom Carrossel de Nutrição */
+.nutri-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.nutri-carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scrollInfinite 30s linear infinite;
+}
+
+.nutri-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.carousel-card {
+  width: 280px;
+  height: 420px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s;
+  filter: brightness(0.85) grayscale(15%);
+}
+
+.carousel-card:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) grayscale(0%);
+}
+
+.card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1.2rem 1.2rem 1.2rem;
+  background: linear-gradient(to top, rgba(4,4,4,0.95) 0%, rgba(4,4,4,0.4) 60%, transparent 100%);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@keyframes scrollInfinite {
+  0% { transform: translateX(0); }
+  /* Move exatamente o tamanho de 8 cards (280px + 24px de gap = 304px por card) */
+  100% { transform: translateX(calc(-304px * 8)); }
+}
+
+.alim-pilar-box {
+  border-left: 2px solid var(--acid);
+  padding-left: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.alim-pilar-box strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.5px;
+}
+
+.alim-pilar-box p {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.partner-opportunity-box {
+  background: rgba(198, 255, 0, 0.02);
+  border: 1px dashed rgba(198, 255, 0, 0.2);
+  padding: 2rem;
+  margin-top: 2.5rem;
+}
+
+.partner-opportunity-box h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--acid);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.partner-opportunity-box p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.partner-opportunity-box a {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s;
+}
+
+.partner-opportunity-box a:hover {
+  color: var(--acid);
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .about { grid-template-columns: 1fr; gap: 60px; }
@@ -1133,7 +1290,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
   <div class="logo">BRUNA <em>OLIVEIRA</em></div>
   <ul class="nav-links">
@@ -1142,18 +1298,17 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
     <li><a href="#performance" data-num="03">Performance</a></li>
     <li><a href="#calendario" data-num="04">Calendário</a></li>
     <li><a href="#galeria" data-num="05">Galeria</a></li>
+    <li><a href="#alimentacao" data-num="06">Alimentação</a></li>
   </ul>
   <a class="nav-cta" href="#contato">Parcerias</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-video">
     <video autoplay muted loop playsinline id="heroVideo">
       <source src="imagens/jornada.mp4" type="video/mp4">
     </video>
   </div>
-  <!-- fallback image caso o vídeo não carregue -->
   <div class="hero-bg" style="z-index:-1">
     <img src="imagens/hero.jpg" id="heroBg" alt="">
   </div>
@@ -1201,7 +1356,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker-wrap">
   <div class="ticker">
     <span>Alta Performance</span>
@@ -1221,7 +1375,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </div>
 
-<!-- ABOUT -->
 <section class="about" id="sobre">
   <div class="about-visual reveal">
     <img class="about-img-main" src="imagens/sobre.jpg" alt="Bruna Oliveira">
@@ -1250,7 +1403,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- HISTÓRIA REAL -->
 <section class="historia" id="historia">
   <div class="historia-inner">
     <div class="historia-left reveal">
@@ -1270,7 +1422,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
       <div class="historia-card reveal reveal-delay-2">
         <div class="hcard-icon">📈</div>
         <h4>Evolução real</h4>
-        <p>De zero a 80–140km por semana em 4 anos. Sem estrutura de elite — só disciplina, foco e constância absoluta.</p>
+        <p>De zero a 80–140km por semana in 4 anos. Sem estrutura de elite — só disciplina, foco e constância absoluta.</p>
       </div>
       <div class="historia-card reveal reveal-delay-3">
         <div class="hcard-icon">🎯</div>
@@ -1281,7 +1433,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- PERFORMANCE -->
 <section class="performance" id="performance">
   <div class="section-label reveal">Números</div>
   <h2 class="section-title reveal reveal-delay-1">Performance<br>em dados.</h2>
@@ -1321,7 +1472,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- PARALLAX BAND -->
 <div class="parallax-band">
   <img src="imagens/foto2.jpg" id="parallaxImg" alt="">
   <div class="parallax-content">
@@ -1331,12 +1481,10 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </div>
 
-<!-- PATROCINADORES -->
 <section class="sponsor-section">
   <div class="section-label reveal">Quem acredita</div>
   <h2 class="section-title reveal reveal-delay-1">Parceiros<br>da jornada.</h2>
 
-  <!-- HOAD destaque -->
   <div class="sponsor-inner reveal" style="margin-bottom:16px">
     <div class="sponsor-label">Patrocinadora de Vestuário</div>
     <div class="sponsor-content">
@@ -1356,7 +1504,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
     </div>
   </div>
 
-  <!-- Guday + Fit Pilates -->
   <div class="sponsors-row reveal reveal-delay-1">
     <div class="sponsor-mini">
       <div class="sponsor-mini-label">Suplementação</div>
@@ -1371,7 +1518,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery" id="galeria">
   <div class="section-label reveal">Galeria</div>
   <h2 class="section-title reveal reveal-delay-1">A jornada<br>em imagens.</h2>
@@ -1387,7 +1533,106 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- CALENDÁRIO -->
+<section class="alimentacao" id="alimentacao">
+  <div class="alim-split-container">
+    
+    <div>
+      <div class="section-label reveal">ALIMENTAÇÃO</div>
+      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 2rem;">Alta performance<br>começa<br><em style="color:var(--acid);font-style:normal">de dentro para fora.</em></h2>
+      
+      <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.8; margin-bottom: 3rem;">
+        A alta performance da Bruna não é sustentada apenas por treinos exaustivos, mas por uma estratégia nutricional extremamente limpa, livre de inflamações e voltada para a máxima eficiência celular.
+      </p>
+
+      <div class="reveal reveal-delay-2">
+        <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 1px; color: var(--acid); margin-bottom: 1.5rem; text-transform: uppercase;">Os Pilares da Alimentação Limpa</h3>
+        
+        <div class="alim-pilar-box">
+          <strong>★ Zero Glúten</strong>
+          <p>Opção estratégica para otimizar a digestão, reduzir o estresse inflamatório sistêmico e acelerar a recuperação muscular entre os treinos de alto volume.</p>
+        </div>
+        
+        <div class="alim-pilar-box">
+          <strong>★ Livre de Industrializados</strong>
+          <p>Alimentação baseada em alimentos inteiros (ovos, tubérculos, frutas e gorduras boas), abolindo aditivos químicos e açúcares refinados que prejudicam a performance.</p>
+        </div>
+        
+        <div class="alim-pilar-box">
+          <strong>★ Nutrição Caseira e Funcional</strong>
+          <p>Uso de estratégias naturais e artesanais (como fermentados caseiros e kefir) para blindar a saúde intestinal, garantindo a absorção correta de nutrientes.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-3" style="margin-top: 2.5rem;">
+        <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 1px; margin-bottom: 1rem; text-transform: uppercase;">A Importância para a Alta Performance</h3>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.6;">
+          <li><b style="color: #fff;">Recuperação Acelerada:</b> O organismo direciona a energia para regenerar fibras musculares, não para combater inflamações digestivas.</li>
+          <li><b style="color: #fff;">Energia Constante:</b> Estoques de glicogênio mantidos por carboidratos limpos e de fontes naturais, sem os picos e quedas gerados por ultraprocessados.</li>
+        </ul>
+      </div>
+
+      <div class="partner-opportunity-box reveal reveal-delay-4">
+        <h4> Sinergia de Marca &amp; Suplementação </h4>
+        <p>
+          Manter treinos diários fortes de altíssima intensidade exige um suporte contínuo de alta densidade energética intra-treino (géis e carboidratos de performance). Buscamos marcas que queiram expor sua pureza e eficácia no cenário real de uma atleta de elite.
+        </p>
+        <a href="#contato">VAMOS CONECTAR SUA MARCA AQUI →</a>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2" style="align-self: center;">
+      <div class="nutri-carousel-container">
+        <div class="nutri-carousel-track">
+          
+          <div class="carousel-card">
+            <img src="imagens/alim-1.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Preparações Estratégicas</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-2.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Densidade de Nutrientes</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-3.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Combustível Puro</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-4.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Recuperação Celular</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-5.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Rotina Pró-Performance</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-6.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Zero Glúten</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-7.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Energia Constante</div>
+          </div>
+          <div class="carousel-card">
+            <img src="imagens/alim-8.jpg" alt="Alimentação Limpa Bruna Oliveira">
+            <div class="card-caption">Comida de Verdade</div>
+          </div>
+
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-1.jpg"><div class="card-caption">Preparações Estratégicas</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-2.jpg"><div class="card-caption">Densidade de Nutrientes</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-3.jpg"><div class="card-caption">Combustível Puro</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-4.jpg"><div class="card-caption">Recuperação Celular</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-5.jpg"><div class="card-caption">Rotina Pró-Performance</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-6.jpg"><div class="card-caption">Zero Glúten</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-7.jpg"><div class="card-caption">Energia Constante</div></div>
+          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-8.jpg"><div class="card-caption">Comida de Verdade</div></div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section class="calendar" id="calendario">
   <div class="section-label reveal">Temporada 2026</div>
   <h2 class="section-title reveal reveal-delay-1">Calendário<br>de provas.</h2>
@@ -1450,7 +1695,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </section>
 
-<!-- WHATSAPP FLOAT -->
 <a class="whatsapp-btn" href="https://wa.me/5547997925892" target="_blank" title="Fale com a Bruna no WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
