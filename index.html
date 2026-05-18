@@ -735,6 +735,119 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   background: linear-gradient(135deg, rgba(4,4,4,0.7) 0%, transparent 50%, rgba(4,4,4,0.8) 100%);
 }
 
+/* HISTORIA */
+.historia {
+  background: var(--mid);
+  padding: 120px 6%;
+}
+.historia-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 100px;
+  align-items: start;
+}
+.historia-quote {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  border-left: 2px solid var(--acid);
+  padding-left: 24px;
+  margin-top: 40px;
+  font-style: italic;
+}
+.historia-aspas {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  color: var(--acid);
+  line-height: 0.5;
+  display: block;
+  margin-bottom: 16px;
+  font-style: normal;
+}
+.historia-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+}
+.historia-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 30px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.historia-card:hover {
+  border-color: rgba(198,255,0,0.3);
+  background: rgba(198,255,0,0.04);
+}
+.hcard-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+.historia-card h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.historia-card p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .historia-inner { grid-template-columns: 1fr; gap: 50px; }
+}
+
+/* SPONSORS ROW */
+.sponsors-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.sponsor-mini {
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.sponsor-mini::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, rgba(198,255,0,0.5), transparent);
+}
+.sponsor-mini:hover { border-color: rgba(198,255,0,0.2); }
+.sponsor-mini-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 12px;
+}
+.sponsor-mini-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 14px;
+}
+.sponsor-mini-desc {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .sponsors-row { grid-template-columns: 1fr; }
+}
+
 /* SPONSOR */
 .sponsor-section {
   background: var(--mid);
@@ -1025,9 +1138,10 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   <div class="logo">BRUNA <em>OLIVEIRA</em></div>
   <ul class="nav-links">
     <li><a href="#sobre" data-num="01">Sobre</a></li>
-    <li><a href="#performance" data-num="02">Performance</a></li>
-    <li><a href="#calendario" data-num="03">Calendário</a></li>
-    <li><a href="#galeria" data-num="04">Galeria</a></li>
+    <li><a href="#historia" data-num="02">História</a></li>
+    <li><a href="#performance" data-num="03">Performance</a></li>
+    <li><a href="#calendario" data-num="04">Calendário</a></li>
+    <li><a href="#galeria" data-num="05">Galeria</a></li>
   </ul>
   <a class="nav-cta" href="#contato">Parcerias</a>
 </nav>
@@ -1093,15 +1207,17 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
     <span>Alta Performance</span>
     <span>Constância</span>
     <span>Disciplina</span>
-    <span>Running</span>
-    <span>Maratona</span>
+    <span>Sub 2h40</span>
+    <span>Superação</span>
     <span>Evolução</span>
+    <span>12 Meias Maratonas</span>
     <span>Alta Performance</span>
     <span>Constância</span>
     <span>Disciplina</span>
-    <span>Running</span>
-    <span>Maratona</span>
+    <span>Sub 2h40</span>
+    <span>Superação</span>
     <span>Evolução</span>
+    <span>12 Meias Maratonas</span>
   </div>
 </div>
 
@@ -1111,26 +1227,56 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
     <img class="about-img-main" src="imagens/sobre.jpg" alt="Bruna Oliveira">
     <img class="about-img-accent" src="imagens/foto3.jpg" alt="">
     <div class="about-badge">
-      <span class="about-badge-num">2026</span>
-      <span class="about-badge-text">Temporada</span>
+      <span class="about-badge-num">4</span>
+      <span class="about-badge-text">Anos correndo</span>
     </div>
   </div>
 
   <div class="about-text">
     <div class="section-label reveal">A Atleta</div>
-    <h2 class="section-title reveal reveal-delay-1">A Jornada<br>de uma<br>Atleta.</h2>
+    <h2 class="section-title reveal reveal-delay-1">Transformando<br>disciplina em<br><em style="color:var(--acid);font-style:normal">performance.</em></h2>
     <p class="reveal reveal-delay-2">
-      A corrida deixou de ser hobby e virou estilo de vida. Cada treino representa evolução, consistência e foco em performance absoluta.
+      Comecei a correr há 4 anos buscando apenas uma vida mais saudável. O que começou como um hábito logo se transformou em paixão — e a paixão, em obsessão por performance.
     </p>
     <p class="reveal reveal-delay-2">
-      Bruna atua como atleta em desenvolvimento contínuo com presença forte em provas regionais, construindo uma trajetória marcada pela dedicação e resultados expressivos.
+      Depois de 2 anos treinando, percebi que queria mais do que apenas correr: queria evoluir, competir e desafiar meus próprios limites. Foram <strong>12 meias maratonas e 1 maratona</strong> completadas, sempre buscando evolução constante e alto rendimento.
     </p>
     <div class="about-tags reveal reveal-delay-3">
-      <span class="tag-item">Maratona</span>
-      <span class="tag-item">Meia Maratona</span>
-      <span class="tag-item">Trail</span>
-      <span class="tag-item">Alta Performance</span>
+      <span class="tag-item">12 Meias Maratonas</span>
+      <span class="tag-item">1 Maratona</span>
+      <span class="tag-item">Camboriú · SC</span>
       <span class="tag-item">HOAD Running</span>
+    </div>
+  </div>
+</section>
+
+<!-- HISTÓRIA REAL -->
+<section class="historia" id="historia">
+  <div class="historia-inner">
+    <div class="historia-left reveal">
+      <div class="section-label">A História</div>
+      <h2 class="section-title">A corrida<br>que mudou<br>tudo.</h2>
+      <div class="historia-quote reveal reveal-delay-1">
+        <span class="historia-aspas">"</span>
+        Mesmo trabalhando diariamente com higienização de estofados — um serviço fisicamente pesado — nunca deixei de treinar, cuidar da alimentação e perseguir meus objetivos no esporte.
+      </div>
+    </div>
+    <div class="historia-right reveal reveal-delay-1">
+      <div class="historia-card">
+        <div class="hcard-icon">⚡</div>
+        <h4>Rotina dupla</h4>
+        <p>Jornada de trabalho físico intenso todos os dias + treinos de alto volume. Recuperação limitada, resultado ilimitado.</p>
+      </div>
+      <div class="historia-card reveal reveal-delay-2">
+        <div class="hcard-icon">📈</div>
+        <h4>Evolução real</h4>
+        <p>De zero a 80–140km por semana em 4 anos. Sem estrutura de elite — só disciplina, foco e constância absoluta.</p>
+      </div>
+      <div class="historia-card reveal reveal-delay-3">
+        <div class="hcard-icon">🎯</div>
+        <h4>Objetivo claro</h4>
+        <p>Maratona sub 2h40 e pódios nas principais provas do Brasil. Com os parceiros certos, esse potencial cresce ainda mais rápido.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1141,19 +1287,36 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   <h2 class="section-title reveal reveal-delay-1">Performance<br>em dados.</h2>
   <div class="stats-grid">
     <div class="stat-card reveal reveal-delay-1">
-      <span class="stat-num">100<span class="stat-unit">km</span></span>
+      <span class="stat-num">80<span class="stat-unit">–140km</span></span>
       <span class="stat-label">Volume Semanal</span>
-      <p class="stat-desc">Média de quilômetros semanais de treino em alta carga</p>
+      <p class="stat-desc">Quilômetros semanais de treino em alta carga, conciliando trabalho e esporte</p>
     </div>
     <div class="stat-card reveal reveal-delay-2">
       <span class="stat-num">1h<span class="stat-unit">23</span></span>
       <span class="stat-label">Meia Maratona</span>
-      <p class="stat-desc">Personal record nos 21km — ritmo de elite</p>
+      <p class="stat-desc">Personal record nos 21km — ritmo de elite feminino</p>
     </div>
     <div class="stat-card reveal reveal-delay-3">
       <span class="stat-num">3h<span class="stat-unit">11</span></span>
       <span class="stat-label">Maratona</span>
-      <p class="stat-desc">Personal record nos 42km — consistência e força mental</p>
+      <p class="stat-desc">Personal record nos 42km — na primeira maratona da carreira</p>
+    </div>
+  </div>
+  <div class="stats-grid" style="margin-top:2px">
+    <div class="stat-card reveal reveal-delay-1">
+      <span class="stat-num">12<span class="stat-unit">+</span></span>
+      <span class="stat-label">Meias Maratonas</span>
+      <p class="stat-desc">Provas completadas em 4 anos de carreira, sempre evoluindo</p>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <span class="stat-num">4<span class="stat-unit">anos</span></span>
+      <span class="stat-label">De corrida</span>
+      <p class="stat-desc">Do primeiro km até treinos de nível competitivo e presença em pódios</p>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <span class="stat-num">2h<span class="stat-unit">40</span></span>
+      <span class="stat-label">Meta Maratona</span>
+      <p class="stat-desc">Objetivo da temporada 2026 — nível de atleta de alto rendimento</p>
     </div>
   </div>
 </section>
@@ -1168,17 +1331,21 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   </div>
 </div>
 
-<!-- PATROCINADOR HOAD -->
+<!-- PATROCINADORES -->
 <section class="sponsor-section">
-  <div class="sponsor-inner reveal">
-    <div class="sponsor-label">Patrocinadora Oficial</div>
+  <div class="section-label reveal">Quem acredita</div>
+  <h2 class="section-title reveal reveal-delay-1">Parceiros<br>da jornada.</h2>
+
+  <!-- HOAD destaque -->
+  <div class="sponsor-inner reveal" style="margin-bottom:16px">
+    <div class="sponsor-label">Patrocinadora de Vestuário</div>
     <div class="sponsor-content">
       <div class="sponsor-logo-block">
         <img src="https://www.hoad.com.br/cdn/shop/files/CMYK_Logotipo_Verde.png?v=1767919474" alt="HOAD Running" class="sponsor-logo">
       </div>
       <div class="sponsor-text">
         <h3 class="sponsor-title">Identidade<br>em movimento.</h3>
-        <p class="sponsor-desc">Feita por atletas para atletas — a HOAD veste Bruna com tecnologia de alta performance em cada prova. Roupas técnicas pensadas para quem não abre mão de velocidade, conforto e estilo.</p>
+        <p class="sponsor-desc">A HOAD veste Bruna com tecnologia de alta performance em cada treino e prova. Além do apoio com roupas técnicas, Bruna é modelo oficial no site da marca — uma parceria de identidade real.</p>
         <a class="sponsor-link" href="https://hoad.com.br" target="_blank">
           Conhecer a HOAD
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -1186,6 +1353,20 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
           </svg>
         </a>
       </div>
+    </div>
+  </div>
+
+  <!-- Guday + Fit Pilates -->
+  <div class="sponsors-row reveal reveal-delay-1">
+    <div class="sponsor-mini">
+      <div class="sponsor-mini-label">Suplementação</div>
+      <div class="sponsor-mini-name">Guday</div>
+      <p class="sponsor-mini-desc">Apoio mensal com creatina em gummies — suplementação inovadora para atletas de endurance que precisam de consistência na recuperação.</p>
+    </div>
+    <div class="sponsor-mini">
+      <div class="sponsor-mini-label">Mobilidade & Recuperação</div>
+      <div class="sponsor-mini-name">Fit Pilates BC</div>
+      <p class="sponsor-mini-desc">Apoio semanal em pilates e mobilidade — prevenção de lesões, alongamento e recuperação. Pilar fundamental para manter volume alto de treino.</p>
     </div>
   </div>
 </section>
@@ -1279,8 +1460,8 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 
 <section class="cta-section" id="contato">
   <div class="cta-inner reveal">
-    <h2 class="cta-title">Conecte sua<br>marca ao<br>movimento.</h2>
-    <p class="cta-sub">Parcerias com uma atleta em evolução constante. Performance real, audiência engajada.</p>
+    <h2 class="cta-title">Faça parte<br>dessa<br>trajetória.</h2>
+    <p class="cta-sub">Atleta real. Rotina pesada. Disciplina absurda. Evolução constante. Conecte sua marca a uma história que inspira — e que ainda está no começo.</p>
     <a class="btn-dark" href="https://instagram.com/brunanatrilha" target="_blank">Instagram ↗</a>
   </div>
 </section>
