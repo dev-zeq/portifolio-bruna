@@ -1849,6 +1849,81 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
     100% { transform: translateX(calc(-214px * 8)); } /* 190px de largura + 24px de espaço (gap) */
   }
 }
+  /* ========================================== */
+/* ESTRUTURA DO CARROSSEL DE ALIMENTAÇÃO      */
+/* ========================================== */
+
+/* Moldura que esconde as fotos que passam para fora da tela */
+.nutri-carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Linha única que segura todas as fotos lado a lado */
+.nutri-carousel-track {
+  display: flex;
+  width: max-content;
+  gap: 20px; /* Espaço entre as fotos */
+  animation: scrollHorizontal 25s linear infinite; /* Animação automática */
+}
+
+/* Evita que o navegador esmague as fotos */
+.nutri-carousel-track:hover {
+  animation-play-state: paused; /* Pausa o carrossel se o usuário passar o mouse */
+}
+
+/* Cada card individual de foto */
+.carousel-card {
+  width: 280px; /* Largura controlada para não ficar gigante */
+  height: 200px; /* Altura fixa e elegante */
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #111;
+}
+
+/* A foto preenchendo o card perfeitamente */
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform 0.4s ease;
+}
+
+/* Efeito sutil ao passar o mouse */
+.carousel-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Legenda discreta em cima da foto */
+.card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: -0.5px;
+}
+
+/* ANIMAÇÃO MAREMOTRIZ: Faz o carrossel correr infinitamente */
+@keyframes scrollHorizontal {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Desloca exatamente metade do conteúdo (a parte original) antes de resetar o loop */
+    transform: translateX(calc(-50% - 10px)); 
+  }
+}
 </style>
 <section class="calendar" id="calendario">
   <div class="section-label reveal">Temporada 2026</div>
