@@ -1110,13 +1110,15 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ===== ALIMENTAÇÃO SECTION MODIFICADA CORRIGIDA ===== */
+/* ===== SEÇÃO ALIMENTAÇÃO TOTALMENTE RESPONSIVA ===== */
 .alimentacao {
   background: var(--dark);
   padding: 120px 6%;
   position: relative;
   overflow: hidden;
 }
+
+/* Título em background "FUEL" */
 .alimentacao::before {
   content: "FUEL";
   position: absolute;
@@ -1141,20 +1143,13 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   z-index: 2;
 }
 
-@media (max-width: 1024px) {
-  .alim-split-container {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-}
-
 /* Custom Carrossel de Nutrição */
 .nutri-carousel-container {
   position: relative;
   width: 100%;
   overflow: hidden;
   padding: 15px 0;
-  display: block; /* Garante que renderiza sempre */
+  display: block;
 }
 
 .nutri-carousel-track {
@@ -1204,29 +1199,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   letter-spacing: 1px;
 }
 
-/* AJUSTES ADICIONAIS DE RESPONSIVIDADE PARA O CELULAR NÃO SUMIR COM AS FOTOS */
-@media (max-width: 768px) {
-  .carousel-card {
-    width: 180px; /* Reduz o tamanho do card no celular para caber perfeitamente na viewport */
-    height: 260px;
-  }
-  .card-caption {
-    font-size: 0.7rem;
-    padding: 1.2rem 0.8rem 0.8rem 0.8rem;
-  }
-  @keyframes scrollInfinite {
-    0% { transform: translateX(0); }
-    /* Reajusta o cálculo de scroll infinito no celular com base na nova largura do card: 180px + 24px (gap) = 204px */
-    100% { transform: translateX(calc(-204px * 8)); }
-  }
-}
-
-@keyframes scrollInfinite {
-  0% { transform: translateX(0); }
-  /* No computador o cálculo permanece baseado em: 280px + 24px (gap) = 304px */
-  100% { transform: translateX(calc(-304px * 8)); }
-}
-
 .alim-pilar-box {
   border-left: 2px solid var(--acid);
   padding-left: 1.2rem;
@@ -1241,7 +1213,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 }
 
 .alim-pilar-box p {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.65);
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -1285,7 +1257,74 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   color: var(--acid);
 }
 
-/* MOBILE */
+@keyframes scrollInfinite {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-304px * 8)); }
+}
+
+/* REGRAS DO MEIA-QUERY PARA CORRIGIR TEXTOS E ESPAÇOS NO CELULAR (IPHONE/ANDROID) */
+@media (max-width: 1024px) {
+  .alim-split-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .alimentacao {
+    padding: 80px 6%; /* Reduz o padding agressivo da seção no celular */
+  }
+  
+  .alimentacao .section-title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem) !important; /* Ajusta o título para não vazar a tela */
+    line-height: 1.0 !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .alimentacao p {
+    font-size: 0.95rem !important; /* Ajusta tamanho do texto corrido */
+    line-height: 1.7 !important;
+  }
+
+  .alim-pilar-box {
+    padding-left: 1rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .alim-pilar-box strong {
+    font-size: 1rem;
+  }
+
+  .alim-pilar-box p {
+    font-size: 0.88rem !important;
+  }
+
+  .partner-opportunity-box {
+    padding: 1.5rem; /* Menos espaçamento interno dentro da caixa pontilhada */
+    margin-top: 2rem;
+  }
+
+  .partner-opportunity-box p {
+    font-size: 0.85rem !important;
+  }
+
+  .carousel-card {
+    width: 180px;
+    height: 260px;
+  }
+  
+  .card-caption {
+    font-size: 0.7rem;
+    padding: 1.2rem 0.8rem 0.8rem 0.8rem;
+  }
+
+  @keyframes scrollInfinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-204px * 8)); } /* Recalcula animação com base no card menor: 180px + 24px gap */
+  }
+}
+
+/* MOBILE CONTEXTO GERAL */
 @media (max-width: 900px) {
   .about { grid-template-columns: 1fr; gap: 60px; }
   .about-visual { order: -1; }
@@ -1555,10 +1594,10 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   <div class="alim-split-container">
     
     <div>
-      <div class="section-label reveal">ALIMENTAÇÃO</div>
-      <h2 class="section-title reveal reveal-delay-1" style="margin-bottom: 2rem;">Alta performance<br>começa<br><em style="color:var(--acid);font-style:normal">de dentro para fora.</em></h2>
+      <div class="section-label reveal">[ 04 / FUEL ]</div>
+      <h2 class="section-title reveal reveal-delay-1">Alta performance<br>começa<br><em style="color:var(--acid);font-style:normal">de dentro para fora.</em></h2>
       
-      <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.8; margin-bottom: 3rem;">
+      <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;">
         A alta performance da Bruna não é sustentada apenas por treinos exaustivos, mas por uma estratégia nutricional extremamente limpa, livre de inflamações e voltada para a máxima eficiência celular.
       </p>
 
@@ -1590,7 +1629,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
       </div>
 
       <div class="partner-opportunity-box reveal reveal-delay-4">
-        <h4> Sinergia de Marca &amp; Suplementação </h4>
+        <h4>[ Sinergia de Marca &amp; Suplementação ]</h4>
         <p>
           Manter treinos diários fortes de altíssima intensidade exige um suporte contínuo de alta densidade energética intra-treino (géis e carboidratos de performance). Buscamos marcas que queiram expor sua pureza e eficácia no cenário real de uma atleta de elite.
         </p>
