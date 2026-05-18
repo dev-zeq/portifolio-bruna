@@ -598,44 +598,92 @@ section { padding: 120px 6%; }
   background: var(--dark);
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: 12px;
-}
-
-.gallery-item {
-  overflow: hidden;
+/* Carrossel unificado — desktop e mobile */
+.gallery-carousel-wrap {
   position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
-.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-.gallery-item:nth-child(5) { grid-column: span 2; }
 
-.gallery-item img {
+.gallery-track {
+  display: flex;
+  gap: 14px;
+  transition: transform 0.48s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  cursor: grab;
+  user-select: none;
+  align-items: center;
+}
+
+.gallery-track.dragging {
+  transition: none;
+  cursor: grabbing;
+}
+
+.gallery-slide {
+  flex: 0 0 340px;
+  width: 340px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 3px;
+  background: #111;
+  transition: border-color 0.3s;
+}
+
+.gallery-slide:hover {
+  border-color: rgba(198,255,0,0.25);
+}
+
+.gallery-slide img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  min-height: 280px;
-  filter: brightness(0.85) saturate(1.1);
-  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), filter 0.6s;
-}
-.gallery-item:hover img {
-  transform: scale(1.08);
-  filter: brightness(1) saturate(1.3);
-}
-.gallery-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+  height: auto;
+  display: block;
+  filter: brightness(0.88) saturate(1.1);
+  transition: filter 0.4s;
   pointer-events: none;
-  transition: opacity 0.3s;
 }
-.gallery-item:hover::after { opacity: 0; }
 
-/* GALLERY MOBILE CAROUSEL */
-.gallery-mobile-carousel { display: none; }
+.gallery-slide.active img {
+  filter: brightness(1) saturate(1.2);
+}
+
+/* Dots */
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.gallery-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.gallery-dot.active {
+  background: var(--acid);
+  transform: scale(1.5);
+}
+
+/* Mobile: slides menores */
+@media (max-width: 768px) {
+  .gallery-slide {
+    flex: 0 0 78vw;
+    width: 78vw;
+  }
+}
+
+/* Esconde o grid antigo */
+.gallery-grid { display: none !important; }
+.gallery-mobile-carousel { display: none !important; }
 
 @media (max-width: 900px) {
   .gallery-desktop { display: none !important; }
@@ -1639,30 +1687,22 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   <div class="section-label reveal">Galeria</div>
   <h2 class="section-title reveal reveal-delay-1">A jornada<br>em imagens.</h2>
 
-  <!-- DESKTOP: grid normal -->
-  <div class="gallery-grid gallery-desktop">
-    <div class="gallery-item reveal"><img src="imagens/foto10.jpg" alt=""></div>
-    <div class="gallery-item reveal reveal-delay-1"><img src="imagens/foto4.jpg" alt=""></div>
-    <div class="gallery-item reveal reveal-delay-2"><img src="imagens/foto05.JPG" alt=""></div>
-    <div class="gallery-item reveal reveal-delay-1"><img src="imagens/foto6.jpg" alt=""></div>
-    <div class="gallery-item reveal reveal-delay-2"><img src="imagens/foto7.jpg" alt=""></div>
-    <div class="gallery-item reveal reveal-delay-3"><img src="imagens/foto8.jpg" alt=""></div>
-    <div class="gallery-item reveal reveal-delay-2"><img src="imagens/foto2.jpg" alt=""></div>
+  <div class="gallery-carousel-wrap reveal reveal-delay-2">
+    <div class="gallery-track" id="galleryTrack">
+      <div class="gallery-slide active"><img src="imagens/foto10.jpg" alt=""></div>
+      <div class="gallery-slide"><img src="imagens/foto4.jpg" alt=""></div>
+      <div class="gallery-slide"><img src="imagens/foto05.JPG" alt=""></div>
+      <div class="gallery-slide"><img src="imagens/foto6.jpg" alt=""></div>
+      <div class="gallery-slide"><img src="imagens/foto7.jpg" alt=""></div>
+      <div class="gallery-slide"><img src="imagens/foto8.jpg" alt=""></div>
+      <div class="gallery-slide"><img src="imagens/foto2.jpg" alt=""></div>
+    </div>
+    <div class="gallery-dots" id="galleryDots"></div>
   </div>
 
-  <!-- MOBILE: carrossel swipe -->
-  <div class="gallery-mobile-carousel">
-    <div class="gallery-mobile-track" id="galleryTrack">
-      <div class="gallery-mobile-slide"><img src="imagens/foto10.jpg" alt=""></div>
-      <div class="gallery-mobile-slide"><img src="imagens/foto4.jpg" alt=""></div>
-      <div class="gallery-mobile-slide"><img src="imagens/foto05.JPG" alt=""></div>
-      <div class="gallery-mobile-slide"><img src="imagens/foto6.jpg" alt=""></div>
-      <div class="gallery-mobile-slide"><img src="imagens/foto7.jpg" alt=""></div>
-      <div class="gallery-mobile-slide"><img src="imagens/foto8.jpg" alt=""></div>
-      <div class="gallery-mobile-slide"><img src="imagens/foto2.jpg" alt=""></div>
-    </div>
-    <div class="gallery-mobile-dots" id="galleryDots"></div>
-  </div>
+  <!-- legado — ocultos via CSS -->
+  <div class="gallery-grid gallery-desktop" style="display:none"></div>
+  <div class="gallery-mobile-carousel" style="display:none"></div>
 </section>
 
 <section class="alimentacao" id="alimentacao">
@@ -2080,13 +2120,13 @@ document.addEventListener('mousemove', e => {
   if (heroVideo) heroVideo.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
 });
 
-// GALLERY MOBILE CAROUSEL
+// GALLERY CAROUSEL (desktop + mobile)
 (function() {
   const track = document.getElementById('galleryTrack');
   const dotsContainer = document.getElementById('galleryDots');
   if (!track || !dotsContainer) return;
 
-  const slides = track.querySelectorAll('.gallery-mobile-slide');
+  const slides = track.querySelectorAll('.gallery-slide');
   const total = slides.length;
   let current = 0;
   let startX = 0, isDragging = false, dragOffset = 0;
@@ -2101,7 +2141,7 @@ document.addEventListener('mousemove', e => {
   });
 
   function getSlideWidth() {
-    return slides[0].getBoundingClientRect().width + 14; // 14 = margin-right
+    return slides[0].getBoundingClientRect().width + 14;
   }
 
   function goTo(index) {
@@ -2112,7 +2152,7 @@ document.addEventListener('mousemove', e => {
   }
 
   // Touch
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; dragOffset = 0; }, { passive: true });
   track.addEventListener('touchmove', e => {
     if (!isDragging) return;
     dragOffset = e.touches[0].clientX - startX;
@@ -2127,7 +2167,7 @@ document.addEventListener('mousemove', e => {
   });
 
   // Mouse drag
-  track.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; track.classList.add('dragging'); });
+  track.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; dragOffset = 0; track.classList.add('dragging'); e.preventDefault(); });
   window.addEventListener('mousemove', e => {
     if (!isDragging) return;
     dragOffset = e.clientX - startX;
