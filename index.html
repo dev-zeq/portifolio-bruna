@@ -1188,62 +1188,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   z-index: 2;
 }
 
-/* Custom Carrossel de Nutrição */
-.nutri-carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 15px 0;
-  display: block;
-}
-
-.nutri-carousel-track {
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  animation: scrollInfinite 30s linear infinite;
-}
-
-.nutri-carousel-track:hover {
-  animation-play-state: paused;
-}
-
-.carousel-card {
-  width: 280px;
-  height: 420px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.08);
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s;
-  filter: brightness(0.85) grayscale(15%);
-}
-
-.carousel-card:hover img {
-  transform: scale(1.06);
-  filter: brightness(1) grayscale(0%);
-}
-
-.card-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 1.2rem 1.2rem 1.2rem;
-  background: linear-gradient(to top, rgba(4,4,4,0.95) 0%, rgba(4,4,4,0.4) 60%, transparent 100%);
-  font-family: 'Space Mono', monospace;
-  font-size: 0.8rem;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 .alim-pilar-box {
   border-left: 2px solid var(--acid);
   padding-left: 1.2rem;
@@ -1302,11 +1246,6 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   color: var(--acid);
 }
 
-@keyframes scrollInfinite {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-304px * 8)); }
-}
-
 /* REGRAS DO MEIA-QUERY PARA CORRIGIR TEXTOS E ESPAÇOS NO CELULAR (IPHONE/ANDROID) */
 @media (max-width: 1024px) {
   .alim-split-container {
@@ -1354,18 +1293,18 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   }
 
   .carousel-card {
-    width: 180px;
-    height: 260px;
+    width: 145px;
+    height: 200px;
   }
   
   .card-caption {
-    font-size: 0.7rem;
-    padding: 1.2rem 0.8rem 0.8rem 0.8rem;
+    font-size: 0.6rem;
+    padding: 1rem 0.6rem 0.6rem 0.6rem;
   }
 
   @keyframes scrollInfinite {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-204px * 8)); } /* Recalcula animação com base no card menor: 180px + 24px gap */
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-157px * 8)); }
   }
 }
 
@@ -1742,188 +1681,142 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
   z-index: 2;
 }
 
-.alim-media-col {
+/* ==============================================
+   CARROSSEL — VERSÃO UNIFICADA (desktop + mobile)
+   ============================================== */
+
+/* Container que funciona como janela de corte */
+.nutri-carousel-container {
   width: 100%;
   overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+  /* Fade nas bordas para efeito premium */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
-/* Configuração do Carrossel para Computador */
-@media (min-width: 769px) {
-  .nutri-carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    width: max-content;
-    animation: scrollInfinite 25s linear infinite;
-  }
-  .nutri-carousel-track:hover {
-    animation-play-state: paused;
-  }
-  .carousel-card {
-    width: 280px;
-    height: 420px;
-    flex-shrink: 0;
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-  @keyframes scrollInfinite {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-304px * 8)); }
-  }
+/* Faixa deslizante */
+.nutri-carousel-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: scrollInfinite 28s linear infinite;
+  will-change: transform;
 }
 
-/* CORREÇÃO COMPLETA: Comportamento para Celular (Telas menores) */
+.nutri-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+/* Card desktop */
+.carousel-card {
+  width: 240px;
+  height: 340px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: #111;
+  transition: border-color 0.3s;
+}
+
+.carousel-card:hover {
+  border-color: rgba(198,255,0,0.3);
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85) grayscale(10%);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s;
+}
+
+.carousel-card:hover img {
+  transform: scale(1.06);
+  filter: brightness(1) grayscale(0%);
+}
+
+.card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1rem 0.9rem 1rem;
+  background: linear-gradient(to top, rgba(4,4,4,0.95) 0%, rgba(4,4,4,0.4) 60%, transparent 100%);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Animação — desktop: baseada em 256px por card (240 + 16 gap) × 8 cards originais */
+@keyframes scrollInfinite {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-256px * 8)); }
+}
+
+/* ==============================================
+   MOBILE — carrossel compacto e animado
+   ============================================== */
 @media (max-width: 768px) {
-  .alim-layout-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
 
-  /* Desativa a animação infinita que quebra o mobile e transforma em um grid perfeito */
-  .nutri-carousel-container {
-    overflow: visible !important;
-  }
-
-  .nutri-carousel-track {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important; /* Duas fotos por linha no celular */
-    gap: 10px !important;
-    width: 100% !important;
-    animation: none !important; /* Desliga o movimento */
-  }
-
+  /* Carrossel menor, cards mais compactos */
   .carousel-card {
-    width: 100% !important; /* O card se adapta ao tamanho da tela */
-    height: 220px !important; /* Altura controlada para o smartphone */
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .pc-only {
-    display: none !important; /* Esconde os cards duplicados no mobile */
+    width: 145px !important;
+    height: 200px !important;
   }
 
   .card-caption {
-    font-size: 0.65rem !important;
-    padding: 1rem 0.5rem 0.5rem 0.5rem !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.5px !important;
+    padding: 1rem 0.6rem 0.6rem 0.6rem !important;
   }
-  
-  .alim-pilar-box p {
-    font-size: 0.9rem !important;
+
+  .nutri-carousel-track {
+    gap: 12px !important;
+    /* Velocidade um pouco mais rápida no mobile para parecer dinâmico */
+    animation-duration: 20s !important;
   }
-}
-/* =======================================================
-   CORREÇÃO COMPLETA: Comportamento para Celular (Alimentação)
-   ======================================================= */
-@media (max-width: 768px) {
-  /* Força a parte dos textos de baixo a ficar em uma coluna só no celular */
+
+  /* Animação corrigida para o tamanho mobile: 145 + 12 gap = 157px por card */
+  @keyframes scrollInfinite {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(calc(-157px * 8)); }
+  }
+
+  /* Textos e grid da seção */
   .alim-bottom-grid {
     grid-template-columns: 1fr !important;
     gap: 30px !important;
   }
 
-  /* Ajusta os títulos para não ficarem gigantescos e nem saírem da tela */
   .alimentacao .section-title {
     font-size: clamp(2.3rem, 8vw, 3.2rem) !important;
     line-height: 1.0 !important;
     margin-bottom: 0px !important;
   }
-  
+
   .alimentacao p {
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
   }
 
-  /* Deixa o carrossel com tamanho perfeito para a tela do iPhone */
-  .carousel-card {
-    width: 190px !important;
-    height: 270px !important;
-  }
-  
-  .card-caption {
-    font-size: 0.7rem !important;
-    padding: 1.2rem 0.8rem 0.8rem 0.8rem !important;
-  }
-
-  /* Reajusta a velocidade e o cálculo do looping infinito para o tamanho menor dos cards no celular */
-  @keyframes scrollInfinite {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-214px * 8)); } /* 190px de largura + 24px de espaço (gap) */
+  .alim-pilar-box p {
+    font-size: 0.9rem !important;
   }
 }
-  /* ========================================== */
-/* ESTRUTURA DO CARROSSEL DE ALIMENTAÇÃO      */
-/* ========================================== */
 
-/* Moldura que esconde as fotos que passam para fora da tela */
-.nutri-carousel-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Linha única que segura todas as fotos lado a lado */
-.nutri-carousel-track {
-  display: flex;
-  width: max-content;
-  gap: 20px; /* Espaço entre as fotos */
-  animation: scrollHorizontal 25s linear infinite; /* Animação automática */
-}
-
-/* Evita que o navegador esmague as fotos */
-.nutri-carousel-track:hover {
-  animation-play-state: paused; /* Pausa o carrossel se o usuário passar o mouse */
-}
-
-/* Cada card individual de foto */
-.carousel-card {
-  width: 280px; /* Largura controlada para não ficar gigante */
-  height: 200px; /* Altura fixa e elegante */
-  flex-shrink: 0;
-  position: relative;
-  border-radius: 6px;
-  overflow: hidden;
-  background: #111;
-}
-
-/* A foto preenchendo o card perfeitamente */
-.carousel-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.85);
-  transition: transform 0.4s ease;
-}
-
-/* Efeito sutil ao passar o mouse */
-.carousel-card:hover img {
-  transform: scale(1.05);
-}
-
-/* Legenda discreta em cima da foto */
-.card-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.85));
-  color: #fff;
-  font-size: 0.8rem;
-  font-family: 'Space Mono', monospace;
-  letter-spacing: -0.5px;
-}
-
-/* ANIMAÇÃO MAREMOTRIZ: Faz o carrossel correr infinitamente */
-@keyframes scrollHorizontal {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    /* Desloca exatamente metade do conteúdo (a parte original) antes de resetar o loop */
-    transform: translateX(calc(-50% - 10px)); 
+/* Textos e grid mobile — alimentação */
+@media (max-width: 768px) {
+  .alim-bottom-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
   }
 }
+
 </style>
 <section class="calendar" id="calendario">
   <div class="section-label reveal">Temporada 2026</div>
