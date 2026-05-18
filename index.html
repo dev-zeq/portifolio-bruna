@@ -1635,12 +1635,17 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 </section>
 
 <section class="alimentacao" id="alimentacao">
-  <div class="alim-split-container">
+  
+  <div class="alim-header-full">
+    <div class="section-label reveal">Combustível</div>
+    <h2 class="section-title reveal reveal-delay-1" style="font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 6rem); line-height: 0.95; margin-bottom: 20px;">
+      Alta performance<br>começa<br><em style="color:var(--acid);font-style:normal">de dentro para fora.</em>
+    </h2>
+  </div>
+
+  <div class="alim-layout-wrapper">
     
-    <div>
-      <div class="section-label reveal">ALIMENTAÇÃO</div>
-      <h2 class="section-title reveal reveal-delay-1">Alta performance<br>começa<br><em style="color:var(--acid);font-style:normal">de dentro para fora.</em></h2>
-      
+    <div class="alim-text-col">
       <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.8; margin-bottom: 2.5rem;">
         A alta performance da Bruna não é sustentada apenas por treinos exaustivos, mas por uma estratégia nutricional extremamente limpa, livre de inflamações e voltada para a máxima eficiência celular.
       </p>
@@ -1681,7 +1686,7 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
       </div>
     </div>
 
-    <div class="reveal reveal-delay-2" style="align-self: center; width: 100%;">
+    <div class="alim-media-col reveal reveal-delay-2">
       <div class="nutri-carousel-container">
         <div class="nutri-carousel-track">
           
@@ -1718,14 +1723,10 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
             <div class="card-caption">Comida de Verdade</div>
           </div>
 
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-1.jpg"><div class="card-caption">Preparações Estratégicas</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-2.jpg"><div class="card-caption">Densidade de Nutrientes</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-3.jpg"><div class="card-caption">Combustível Puro</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-4.jpg"><div class="card-caption">Recuperação Celular</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-5.jpg"><div class="card-caption">Rotina Pró-Performance</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-6.jpg"><div class="card-caption">Zero Glúten</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-7.jpg"><div class="card-caption">Energia Constante</div></div>
-          <div class="carousel-card" aria-hidden="true"><img src="imagens/alim-8.jpg"><div class="card-caption">Comida de Verdade</div></div>
+          <div class="carousel-card pc-only" aria-hidden="true"><img src="imagens/alim-1.jpg"><div class="card-caption">Preparações Estratégicas</div></div>
+          <div class="carousel-card pc-only" aria-hidden="true"><img src="imagens/alim-2.jpg"><div class="card-caption">Densidade de Nutrientes</div></div>
+          <div class="carousel-card pc-only" aria-hidden="true"><img src="imagens/alim-3.jpg"><div class="card-caption">Combustível Puro</div></div>
+          <div class="carousel-card pc-only" aria-hidden="true"><img src="imagens/alim-4.jpg"><div class="card-caption">Recuperação Celular</div></div>
 
         </div>
       </div>
@@ -1733,7 +1734,85 @@ footer .footer-logo em { color: var(--acid); font-style: normal; }
 
   </div>
 </section>
+<style>
+.alim-layout-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
 
+.alim-media-col {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Configuração do Carrossel para Computador */
+@media (min-width: 769px) {
+  .nutri-carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scrollInfinite 25s linear infinite;
+  }
+  .nutri-carousel-track:hover {
+    animation-play-state: paused;
+  }
+  .carousel-card {
+    width: 280px;
+    height: 420px;
+    flex-shrink: 0;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  @keyframes scrollInfinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-304px * 8)); }
+  }
+}
+
+/* CORREÇÃO COMPLETA: Comportamento para Celular (Telas menores) */
+@media (max-width: 768px) {
+  .alim-layout-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  /* Desativa a animação infinita que quebra o mobile e transforma em um grid perfeito */
+  .nutri-carousel-container {
+    overflow: visible !important;
+  }
+
+  .nutri-carousel-track {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Duas fotos por linha no celular */
+    gap: 10px !important;
+    width: 100% !important;
+    animation: none !important; /* Desliga o movimento */
+  }
+
+  .carousel-card {
+    width: 100% !important; /* O card se adapta ao tamanho da tela */
+    height: 220px !important; /* Altura controlada para o smartphone */
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .pc-only {
+    display: none !important; /* Esconde os cards duplicados no mobile */
+  }
+
+  .card-caption {
+    font-size: 0.65rem !important;
+    padding: 1rem 0.5rem 0.5rem 0.5rem !important;
+  }
+  
+  .alim-pilar-box p {
+    font-size: 0.9rem !important;
+  }
+}
+</style>
 <section class="calendar" id="calendario">
   <div class="section-label reveal">Temporada 2026</div>
   <h2 class="section-title reveal reveal-delay-1">Calendário<br>de provas.</h2>
