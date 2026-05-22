@@ -1675,6 +1675,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sponsor-mini-desc">Apoio semanal em pilates e mobilidade — prevenção de lesões, alongamento e recuperação. Pilar fundamental para manter volume alto de treino.</p>
     </div>
   </div>
+
+  <!-- BOTÃO DE APOIO -->
+  <div class="support-cta reveal reveal-delay-2">
+    <div class="support-cta-eyebrow">
+      <span></span>
+      <span class="support-cta-label">Faça parte</span>
+      <span></span>
+    </div>
+    <p>Você também sente o desejo<br>de fazer parte dessa jornada?</p>
+    <a href="#apoiar" class="btn-support">
+      <span class="btn-support-text">Apoiar Bruna</span>
+      <span class="btn-support-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  </div>
 </section>
 
 <section class="gallery" id="galeria">
@@ -1943,6 +1961,337 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 }
 
+/* ── SEÇÃO DE APOIO ── */
+.support-section {
+  padding: 120px 6%;
+  background: var(--mid);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.support-section::before {
+  content: "APOIO";
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22vw;
+  color: rgba(255,255,255,0.02);
+  right: -4%;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  letter-spacing: -8px;
+  white-space: nowrap;
+}
+.support-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.support-header {
+  margin-bottom: 72px;
+}
+.support-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  margin-bottom: 20px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+.support-header p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 540px;
+  line-height: 1.8;
+}
+
+.support-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  margin-bottom: 64px;
+}
+.tier-card {
+  background: rgba(255,255,255,0.02);
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0;
+  padding: 44px 36px;
+  position: relative;
+  transition: all 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+.tier-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 3px;
+  height: 0%;
+  transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.tier-bronze::before { background: #cd7f32; }
+.tier-prata::before  { background: var(--acid); }
+.tier-ouro::before   { background: #ffa500; }
+.tier-diamante::before { background: #00d9ff; }
+
+.tier-card:hover::before { height: 100%; }
+.tier-card:hover { background: rgba(255,255,255,0.04); transform: none; }
+
+.tier-badge {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 20px;
+  width: fit-content;
+}
+.tier-badge-popular {
+  color: var(--acid);
+}
+
+.tier-amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 8px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+.tier-amount span {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0;
+}
+
+.tier-desc {
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 28px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 24px;
+}
+
+.tier-benefits {
+  list-style: none;
+  margin-bottom: 36px;
+  flex-grow: 1;
+}
+.tier-benefits li {
+  padding: 9px 0;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-family: 'DM Sans', sans-serif;
+}
+.tier-benefits li:last-child {
+  border-bottom: none;
+}
+
+.tier-actions {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+.btn-tier {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.btn-tier-primary {
+  background: var(--acid);
+  color: #000;
+}
+.btn-tier-primary:hover {
+  background: #000;
+  color: var(--acid);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Destaque Prata */
+.tier-prata {
+  background: rgba(198,255,0,0.04);
+  border-top-color: var(--acid);
+}
+.tier-prata:hover {
+  background: rgba(198,255,0,0.07);
+}
+
+/* Diamante */
+.tier-diamante { 
+  background: rgba(0,217,255,0.04);
+  border-top-color: #00d9ff;
+}
+.tier-diamante:hover {
+  background: rgba(0,217,255,0.07);
+}
+
+/* Livre */
+.tier-livre {
+  background: rgba(255,255,255,0.02);
+  border-top-color: rgba(255,255,255,0.2);
+}
+.tier-livre::before { background: rgba(255,255,255,0.4); }
+.tier-livre:hover { background: rgba(255,255,255,0.04); }
+
+.tier-livre-note {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-style: italic;
+  flex-grow: 1;
+}
+
+.btn-tier-whats {
+  background: transparent;
+  color: #25d366;
+  border: 1px solid rgba(37,211,102,0.3);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.btn-tier-whats:hover {
+  background: rgba(37,211,102,0.1);
+  border-color: #25d366;
+  transform: none;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+
+
+
+/* BOTÃO DE APOIO NA SEÇÃO DE SPONSORS */
+.support-cta {
+  text-align: center;
+  margin-top: 80px;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.support-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(198,255,0,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.support-cta-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.support-cta-eyebrow span:first-child,
+.support-cta-eyebrow span:last-child {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--acid);
+  opacity: 0.6;
+}
+.support-cta-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--acid);
+}
+.support-cta p {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  color: #fff;
+  margin-bottom: 44px;
+  line-height: 0.95;
+  letter-spacing: -0.5px;
+}
+.btn-support {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 18px 42px;
+  background: var(--acid);
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn-support::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+.btn-support:hover::before { transform: translateX(0); }
+.btn-support:hover { color: var(--acid); }
+.btn-support-text,
+.btn-support-icon {
+  position: relative;
+  z-index: 1;
+}
+.btn-support-icon {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s;
+}
+.btn-support:hover .btn-support-icon {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .support-section { padding: 80px 6%; }
+  .support-header h2 { font-size: 3rem; }
+  .support-tiers { grid-template-columns: 1fr; gap: 2px; }
+  .tier-prata { transform: scale(1); }
+  .tier-card { padding: 36px 24px; }
+  .tier-amount { font-size: 3rem; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: fadeUp 0.8s ease-out forwards; opacity: 0; }
+.reveal-delay-1 { animation-delay: 0.2s; }
+.reveal-delay-2 { animation-delay: 0.4s; }
+.reveal-delay-3 { animation-delay: 0.6s; }
+
+
 </style>
 <section class="calendar" id="calendario">
   <div class="section-label reveal">Temporada 2026</div>
@@ -2021,6 +2370,85 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a class="btn-dark" href="https://instagram.com/brunanatrilha" target="_blank">Instagram ↗</a>
       <a class="btn-dark" href="https://tiktok.com/@abrunacorre" target="_blank" style="background:#000;color:#fff;border:1px solid rgba(255,255,255,0.2);">TikTok ↗</a>
       <a class="btn-dark" href="bruna-oliveira-mediakit.pdf" download style="background:var(--acid);color:#000;border:none;">↓ Baixar Mídia Kit</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO DE APOIO -->
+<section class="support-section" id="apoiar">
+  <div class="support-container">
+    <div class="support-header reveal">
+      <div class="section-label" style="justify-content:center;">Apoie a Atleta</div>
+      <h2>Apoie Bruna<br>na Jornada</h2>
+      <p>Seu apoio financia treinos, provas, deslocamentos e hospedagem. Seja um patrocinador e faça parte dessa história de dedicação e vitória.</p>
+    </div>
+
+    <div class="support-tiers">
+      <!-- BRONZE -->
+      <div class="tier-card tier-bronze reveal">
+        <div class="tier-badge">Bronze</div>
+        <div class="tier-amount">R$ 49<span>/mês</span></div>
+        <p class="tier-desc">Apoio em materiais esportivos e recuperação</p>
+        <ul class="tier-benefits">
+          <li>✓ Menção mensal no Stories</li>
+          <li>✓ Acesso a treinos em vídeo</li>
+          <li>✓ Atualizações exclusivas de progresso</li>
+        </ul>
+        <div class="tier-actions">
+          <a href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=4a296e6bb3634eff81776088b1c5a1a2" target="_blank" class="btn-tier btn-tier-primary">Apoiar via Mercado Pago</a>
+        </div>
+      </div>
+
+      <!-- PRATA -->
+      <div class="tier-card tier-prata reveal reveal-delay-1">
+        <div class="tier-badge tier-badge-popular">Prata ⭐ Popular</div>
+        <div class="tier-amount">R$ 99<span>/mês</span></div>
+        <p class="tier-desc">Financie treinos, materiais e deslocamentos</p>
+        <ul class="tier-benefits">
+          <li>✓ Tudo do Bronze</li>
+          <li>✓ Vídeo personalizado de agradecimento</li>
+          <li>✓ Relatório mensal de treinos e gastos</li>
+          <li>✓ Prioridade em lives e Q&A</li>
+        </ul>
+        <div class="tier-actions">
+          <a href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=bcacaaab9cbc4e5dbc57125d5c4bb7fe" target="_blank" class="btn-tier btn-tier-primary">Apoiar via Mercado Pago</a>
+        </div>
+      </div>
+
+      <!-- OURO -->
+      <div class="tier-card tier-ouro reveal reveal-delay-2">
+        <div class="tier-badge">Ouro</div>
+        <div class="tier-amount">R$ 399<span>/mês</span></div>
+        <p class="tier-desc">Patrocine Bruna de forma completa</p>
+        <ul class="tier-benefits">
+          <li>✓ Tudo do Prata</li>
+          <li>✓ Contribuição para materiais esportivos premium</li>
+          <li>✓ Apoio em deslocamentos para competições</li>
+          <li>✓ Apoio em recuperação e nutrição</li>
+          <li>✓ Seu nome no site (Patrocinador Ouro)</li>
+          <li>✓ Relatório de impacto mensal</li>
+        </ul>
+        <div class="tier-actions">
+          <a href="https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=ece363c68ef840e096660d38a0363686" target="_blank" class="btn-tier btn-tier-primary">Apoiar via Mercado Pago</a>
+        </div>
+      </div>
+
+      <!-- LIVRE -->
+      <div class="tier-card tier-livre reveal reveal-delay-3">
+        <div class="tier-badge">Contribuição Livre</div>
+        <div class="tier-amount">❤️<span style="font-family:'DM Sans',sans-serif;font-size:1rem;color:rgba(255,255,255,0.4);display:block;margin-top:6px;font-style:italic;">qualquer valor</span></div>
+        <p class="tier-desc">Sem planos, sem regras — só o gesto de acreditar. Contribua com o que o coração mandar, quando quiser.</p>
+        <div class="tier-livre-note">
+          Quer apoiar de forma maior e combinar algo especial? Fala direto com a Bruna.
+        </div>
+        <div class="tier-actions">
+          <a href="https://link.mercadopago.com.br/apoiebruna" target="_blank" class="btn-tier btn-tier-primary">Contribuir via Mercado Pago</a>
+          <a href="https://wa.me/5547997925892?text=Oi%20Bruna!%20Quero%20te%20dar%20um%20apoio%20maior%20%F0%9F%92%9A%20Podemos%20combinar%20os%20detalhes%3F" target="_blank" class="btn-tier btn-tier-whats">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Quero apoiar mais — vamos combinar
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2185,5 +2613,6 @@ document.addEventListener('mousemove', e => {
 })();
 
 </script>
+
 </body>
 </html>
