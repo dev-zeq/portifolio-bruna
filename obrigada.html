@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscrição Confirmada — Bruna Oliveira</title>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KMLR6XH4');</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --acid: #c6ff00;
+  --dark: #040404;
+  --mid: #0d0d0d;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--dark);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9000;
+  opacity: 0.6;
+}
+
+header {
+  padding: 30px 6%;
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+  color: #fff;
+  text-decoration: none;
+}
+.logo em { color: var(--acid); font-style: normal; }
+
+main {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 6%;
+}
+
+.thank-you-box {
+  max-width: 600px;
+  text-align: center;
+  background: var(--mid);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 60px 40px;
+  position: relative;
+  clip-path: polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%);
+}
+
+.thank-you-box::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--acid);
+}
+
+.icon-success {
+  width: 64px;
+  height: 64px;
+  background: rgba(198,255,0,0.1);
+  border: 1px solid var(--acid);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+}
+.icon-success svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--acid);
+}
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--acid);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  margin-bottom: 24px;
+}
+
+.description {
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+}
+
+.steps-list {
+  text-align: left;
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed rgba(255,255,255,0.1);
+  padding: 24px;
+  margin-bottom: 40px;
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.step-item:last-child { margin-bottom: 0; }
+
+.step-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--acid);
+  font-weight: bold;
+}
+
+.step-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+}
+
+.btn-back {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  background: var(--acid);
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: all 0.3s;
+}
+.btn-back:hover {
+  background: #fff;
+}
+
+footer {
+  padding: 30px 6%;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .thank-you-box {
+    padding: 40px 20px;
+    clip-path: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMLR6XH4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<header>
+  <a href="index.html" class="logo">BRUNA<em>OLIVEIRA</em></a>
+</header>
+
+<main>
+  <div class="thank-you-box">
+    <div class="icon-success">
+      <svg viewBox="0 0 24 24">
+        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      </svg>
+    </div>
+    
+    <p class="eyebrow">Acelere seus resultados</p>
+    <h1 class="title">Obrigada pelo seu apoio!</h1>
+    
+    <p class="description">Seu pagamento foi processado com sucesso. Você acabou de dar um passo importante em direção à sua melhor performance.</p>
+    
+    <div class="steps-list">
+      <div class="step-item">
+        <span class="step-num">[01]</span>
+        <p class="step-text">Verifique sua caixa de entrada (e a pasta de spam) para o e-mail de confirmação do Mercado Pago.</p>
+      </div>
+      <div class="step-item">
+        <span class="step-num">[02]</span>
+        <p class="step-text">Nossa equipe entrará em contato em breve através do e-mail cadastrado para alinhar os próximos passos da nossa parceria.</p>
+      </div>
+    </div>
+    
+    <a href="index.html" class="btn-back">Voltar para o Início</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 BRUNA OLIVEIRA. ALL RIGHTS RESERVED.</p>
+</footer>
+
+</body>
+</html>
