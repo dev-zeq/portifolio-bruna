@@ -1,0 +1,6 @@
+[
+  { "nome": "Meia de Piçarras", "data": "19/07", "distancia": "21 km", "tipo": "preparatoria" },
+  { "nome": "Meia do Rio — Final CBAt", "data": "16/08", "distancia": "21 km", "tipo": "preparatoria" },
+  { "nome": "Maratona de Floripa", "data": "30/08", "distancia": "42 km", "tipo": "alvo" },
+  { "nome": "Maratona de Jurerê", "data": "10/10", "distancia": "21 / 42 km", "tipo": "alvo" }
+]

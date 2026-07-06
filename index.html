@@ -1985,42 +1985,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span>Distância</span>
       <span>Tipo</span>
     </div>
-    <div class="calendar-row">
-      <div class="race-name">Meia Santos Dumont</div>
-      <div class="race-date">28/06</div>
-      <div class="race-dist">21 km</div>
-      <div class="race-type"><span class="badge-pp">Preparatória</span></div>
-    </div>
-    <div class="calendar-row">
-      <div class="race-name">Maratona de Blumenau</div>
-      <div class="race-date">05/07</div>
-      <div class="race-dist">21 km</div>
-      <div class="race-type"><span class="badge-pp">Preparatória</span></div>
-    </div>
-    <div class="calendar-row">
-      <div class="race-name">Meia de Barra Velha</div>
-      <div class="race-date">19/07</div>
-      <div class="race-dist">21 km</div>
-      <div class="race-type"><span class="badge-pp">Preparatória</span></div>
-    </div>
-    <div class="calendar-row">
-      <div class="race-name">Meia do Rio — Final CBAt</div>
-      <div class="race-date">16/08</div>
-      <div class="race-dist">21 km</div>
-      <div class="race-type"><span class="badge-pp">Preparatória</span></div>
-    </div>
-    <div class="calendar-row">
-      <div class="race-name">Maratona de Floripa</div>
-      <div class="race-date">30/08</div>
-      <div class="race-dist">42 km</div>
-      <div class="race-type"><span class="badge-pa">🎯 Prova Alvo</span></div>
-    </div>
-    <div class="calendar-row">
-      <div class="race-name">Maratona de Jurerê</div>
-      <div class="race-date">10/10</div>
-      <div class="race-dist">21 / 42 km</div>
-      <div class="race-type"><span class="badge-pa">🎯 Prova Alvo</span></div>
-    </div>
+    <div id="calendar-rows"></div>
   </div>
 </section>
 
@@ -2133,6 +2098,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script>
+// CALENDÁRIO (carregado de calendario.json)
+const BADGES = {
+  preparatoria: '<span class="badge-pp">Preparatória</span>',
+  alvo: '<span class="badge-pa">🎯 Prova Alvo</span>'
+};
+
+fetch('calendario.json')
+  .then(res => res.json())
+  .then(provas => {
+    const container = document.getElementById('calendar-rows');
+    if (!container) return;
+    container.innerHTML = provas.map(p => `
+      <div class="calendar-row">
+        <div class="race-name">${p.nome}</div>
+        <div class="race-date">${p.data}</div>
+        <div class="race-dist">${p.distancia}</div>
+        <div class="race-type">${BADGES[p.tipo] || ''}</div>
+      </div>
+    `).join('');
+  })
+  .catch(err => console.error('Erro ao carregar calendario.json:', err));
+
 // CURSOR
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
